@@ -1,7 +1,8 @@
+import { Entypo, FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { backgroundColor } from "@shopify/restyle";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useContext, useEffect, useState } from "react";
-import { FlatList, View, StyleSheet, Dimensions, Image, Text, TextInput, ScrollView, TouchableOpacity } from "react-native";
+import { FlatList, View, StyleSheet, Dimensions, Image, Text, TextInput, ScrollView, TouchableOpacity, StatusBar } from "react-native";
 import Animated, { interpolateColor } from "react-native-reanimated";
 import { mixColor } from "react-native-redash";
 
@@ -30,124 +31,141 @@ export const Card = ({ }) => {
         setProducts(getItem.data)
     }, [])
     
-    return (
+    return ( 
 
-        <View style={{
-            backgroundColor:"#FFF",
-            flex:1
-        }}>
-           <View style={{
-               backgroundColor:"#00a46c",
-               height:"28%",
-               borderBottomLeftRadius:20,
-               borderBottomRightRadius:20,
-               paddingHorizontal:20
-           }}>
-             
-               <View style={{
-                   flexDirection:"row",
-                   alignItems:"center",
-                   marginTop:25,
-                   width:"100%"
-               }}>
-               </View>
-           </View>
-           <LinearGradient
-            colors={["rgba(0,164,109,0.4)", "transparent"]}
+    <View
+      style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: "#ffffff",
+      }}>
+      <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            padding: 16,
+          }}>
+          <TouchableOpacity>
+            <Entypo
+              name="shopping-bag"
+              style={{
+                fontSize: 18,
+                color:  "#B9B9B9",
+                padding: 12,
+                borderRadius: 10,
+                backgroundColor: "#F0F0F3",
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity >
+            <MaterialCommunityIcons
+              name="cart"
+              style={{
+                fontSize: 18,
+                color: "#B9B9B9",
+                padding: 12,
+                borderRadius: 10,
+                borderWidth: 1,
+                borderColor: "#F0F0F3",
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            marginBottom: 10,
+            padding: 16,
+          }}>
+          <Text
             style={{
-                left:0,
-                right:0,
-                height:90,
-                marginTop:-45
-            }}
-           >
-               <View style={{
-                   backgroundColor:"#FFF",
-                   paddingVertical:8,
-                   paddingHorizontal:20,
-                   marginHorizontal:20,
-                   borderRadius:15,
-                   marginTop:25,
-                   flexDirection:"row",
-                   alignItems:"center"
-               }}>
-                   <TextInput
-                        placeholder="Search"
-                        placeholderTextColor="#b1e5d3"
-                        style={{
-                            fontWeight:"bold",
-                            fontSize:18,
-                            width:260
-                        }}
-                   />
-               </View>
-            </LinearGradient>
-
-
-               <View style={{
-                   flexDirection:"row",
-                   paddingHorizontal:20,
-                   width:"100%",
-                   alignItems:"center"
-               }}>
-                   <View style={{width:"50%"}}>
-                        <Text style={{
-                            fontWeight:"bold",
-                            fontSize:17,
-                            color:"#585a61"
-                        }}>Recommended</Text>
-                        <View style={{
-                            height:4,
-                            backgroundColor:"#b1e5d3",
-                            width:115,
-                            marginTop:-5
-                        }}>
-
-                        </View>
-
-                   </View>
-                   <View style={{width:"50%", alignItems:"flex-end"}}>
-                        <View style={{
-                            backgroundColor:"#00a46c",
-                            paddingHorizontal:20,
-                            paddingVertical:5,
-                            borderRadius:15
-                        }}>
-                            <Text style={{
-                                fontWeight:"bold",
-                                fontSize:13,
-                                color:"#FFF"
-                            }}>More</Text>
-                        </View>
-                   </View>
-               </View>
-             <ScrollView 
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    style={{height:400}}
-                >
-                    <LinearGradient
-                        colors={["rgba(0,164,109,0.09)", "transparent"]}
-                        style={{
-                            position:"absolute",
-                            left:0,
-                            right:0,
-                            height:100,
-                            marginTop:220,
-                            top:0
-                        }}
-                    />
-                   
-               {products && products.map((item:any, i) => (
+              fontSize: 26,
+              color: "#000000",
+              fontWeight: '500',
+              letterSpacing: 1,
+              marginBottom: 10,
+            }}>
+            Hi-Fi Shop &amp; Service
+          </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              color: "#000000",
+              fontWeight: '400',
+              letterSpacing: 1,
+              lineHeight: 24,
+            }}>
+            Audio shop on Rustaveli Ave 57.
+            {'\n'}This shop offers both products and services
+          </Text>
+        </View>
+        <View
+          style={{
+            padding: 16,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: "#000000",
+                  fontWeight: '500',
+                  letterSpacing: 1,
+                }}>
+                Products
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: "#000000",
+                  fontWeight: '400',
+                  opacity: 0.5,
+                  marginLeft: 10,
+                }}>
+                41
+              </Text>
+            </View>
+            <Text
+              style={{
+                fontSize: 14,
+                color: "#0043F9",
+                fontWeight: '400',
+              }}>
+              SeeAll
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'space-around',
+            }}>
+            {products && products.map((item:any, i) => (
             <ListCard
               key={i}
               products={item}
               
             />
           ))}
-        </ScrollView>
-          
+          </View>
         </View>
+
+        
+      </ScrollView>
+    </View>
+
+      
         
     )
 }

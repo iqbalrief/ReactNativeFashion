@@ -14,7 +14,7 @@ const OutfitIdeas = ( {navigation} : HomeNavigationProps<"OutfitIdeas"> ) => {
         <Header
         title="Outfit Ideas"
         left={{ icon: "menu", onPress: () => true }}
-        right={{ icon: "shopping-bag", onPress: () => true }}
+        right={{ icon: "shopping-bag", onPress: () => navigation.navigate("Cart") }}
       />
       < Box flex={1} >
           <Card />

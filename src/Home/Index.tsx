@@ -5,7 +5,9 @@ import { createDrawerNavigator, } from "@react-navigation/drawer";
 import { HomeRoutes } from "../components/Navigation";
 import OutfitIdeas from "./OutfitIdeas";
 import DrawerContent, { DRAWER_WIDTH } from "./Drawer";
-import OutfitIdeasDetail from "./OutfitIdeasDetail";
+import OutfitIdeasDetail from "./OutfitIdeas/OutfitIdeasDetail";
+import Cart from "./Cart";
+
 
 
 
@@ -20,5 +22,8 @@ export const HomeNavigator = () => (
 
 <Drawer.Screen options={{ headerShown: false }}
       name="OutfitIdeasDetail" component={OutfitIdeasDetail} />
+
+<Drawer.Screen options={{ headerShown: false }}
+      name="Cart" component={Cart} />
   </Drawer.Navigator>
 );

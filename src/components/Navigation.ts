@@ -34,11 +34,10 @@ export type AuthenticationRoutes = {
     SignUp: undefined;
     ForgotPassword: undefined;
     PasswordChanged: undefined;
-    OutfitIdeas: undefined;
-    OutfitIdeasDetail: undefined;
 };
 
 export type HomeRoutes = {
     OutfitIdeas: undefined;
     OutfitIdeasDetail: undefined;
+    Cart: undefined;
   }
