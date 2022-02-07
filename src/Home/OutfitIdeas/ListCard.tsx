@@ -11,7 +11,7 @@ export const ListCard = ({ products }: any) => {
         
         <>
         <TouchableOpacity
-        onPress={() => navigation.navigate("OutfitIdeasDetail")}
+        onPress={() => navigation.navigate("OutfitIdeasDetail", {detail: products}) }
         style={{
           width: '48%',
           marginVertical: 14,

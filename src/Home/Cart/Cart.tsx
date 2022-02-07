@@ -1,10 +1,22 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { theme } from '../../components';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { CartContext } from '../../Service/Cart/cart.context';
+import listCart from './listCart';
+import ListCart from './listCart';
+
 
 const Cart = () => {
+  const [cart, setCart] = useState([])
+    const { cartAll }: any = useContext(CartContext);
+
+    useEffect( async () => {  
+        const getItem = await cartAll() 
+        setCart(getItem.data)
+    }, [])
   return (
+    <View style={{paddingHorizontal: 16}}>
     <View
       style={{
         width: '100%',
@@ -12,8 +24,7 @@ const Cart = () => {
         backgroundColor: theme.colors.white,
         position: 'relative',
       }}>
-      <ScrollView>
-        <View
+         <View
           style={{
             width: '100%',
             flexDirection: 'row',
@@ -56,143 +67,15 @@ const Cart = () => {
           }}>
           My Cart
         </Text>
-        <View style={{paddingHorizontal: 16}}>
-          {/* {product ? product.map(renderProducts) : null} */}
-          <TouchableOpacity
-        // key={data.key}
-        // onPress={() => navigation.navigate('ProductInfo', {productID: data.id})}
-        style={{
-          width: '100%',
-          height: 100,
-          marginVertical: 6,
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}>
-        <View
-          style={{
-            width: '30%',
-            height: 100,
-            padding: 14,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: theme.colors.backgroundLight,
-            borderRadius: 10,
-            marginRight: 22,
-          }}>
-          <Image
-            source={{uri:"https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.biggo.com.tw%2Fs5k_7mJ-xwqu4J843V-r5aqBTnzuZboCgOo-03I2wlZk%2Fhttps%3A%2F%2Fid-live-01.slatic.net%2Fp%2Fde4973faa2b20320215c57b6a523af3b.jpg&imgrefurl=https%3A%2F%2Fbiggo.id%2Fs%2Ferigo%2520kaos%2F&tbnid=54ZhBooapvirYM&vet=12ahUKEwiz9dGkiej1AhUxT3wKHXhbBM0QMygOegUIARDdAQ..i&docid=Pz-NxYvYYENYYM&w=1163&h=1163&q=erigo&ved=2ahUKEwiz9dGkiej1AhUxT3wKHXhbBM0QMygOegUIARDdAQ"}}
-            style={{
-              width: '100%',
-              height: '100%',
-              resizeMode: 'contain',
-            }}
-          />
-        </View>
-        <View
-          style={{
-            flex: 1,
-            height: '100%',
-            justifyContent: 'space-around',
-          }}>
-          <View style={{}}>
-            <Text
-              style={{
-                fontSize: 14,
-                maxWidth: '100%',
-                color: theme.colors.black,
-                fontWeight: '600',
-                letterSpacing: 1,
-              }}>
-              {/* {data.productName} */}
-            </Text>
-            <View
-              style={{
-                marginTop: 4,
-                flexDirection: 'row',
-                alignItems: 'center',
-                opacity: 0.6,
-              }}>
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontWeight: '400',
-                  maxWidth: '85%',
-                  marginRight: 4,
-                }}>
-                {/* &#8377; */}
-                {/* {data.productPrice} */}
-              </Text>
-              <Text>
-                {/* (&#8377;
-                {data.productPrice + data.productPrice / 20}) */}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <View
-                style={{
-                  borderRadius: 100,
-                  marginRight: 20,
-                  padding: 4,
-                  borderWidth: 1,
-                  borderColor: theme.colors.backgroundMedium,
-                  opacity: 0.5,
-                }}>
-                <MaterialCommunityIcons
-                  name="minus"
-                  style={{
-                    fontSize: 16,
-                    color: theme.colors.backgroundDark,
-                  }}
-                />
-              </View>
-              <Text>1</Text>
-              <View
-                style={{
-                  borderRadius: 100,
-                  marginLeft: 20,
-                  padding: 4,
-                  borderWidth: 1,
-                  borderColor: theme.colors.backgroundMedium,
-                  opacity: 0.5,
-                }}>
-                <MaterialCommunityIcons
-                  name="plus"
-                  style={{
-                    fontSize: 16,
-                    color: theme.colors.backgroundDark,
-                  }}
-                />
-              </View>
-            </View>
-            <TouchableOpacity onPress={() => true}>
-              <MaterialCommunityIcons
-                name="delete-outline"
-                style={{
-                  fontSize: 16,
-                  color: theme.colors.backgroundDark,
-                  backgroundColor: theme.colors.backgroundLight,
-                  padding: 8,
-                  borderRadius: 100,
-                }}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </TouchableOpacity>
-        
-        </View>
-        <View>
+      <ScrollView>
+      {cart && cart.map((item:any, i) => (
+            <ListCart
+              key={i}
+              cart={item}
+              
+            />
+          ))}         
+       <View>
           <View
             style={{
               paddingHorizontal: 16,
@@ -474,6 +357,8 @@ const Cart = () => {
         </TouchableOpacity>
       </View>
     </View>
+    </View>
+    
   );
 };
 

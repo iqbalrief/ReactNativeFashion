@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { SigninRequest, SignupRequest } from "./authService";
+import { save, SigninRequest, SignupRequest } from "./authService";
 
 
 export const AuthContext = createContext({});
@@ -34,7 +34,8 @@ export const AuthContextProvider = ({ children }: any) => {
       });
       SigninRequest(dataSignin)
         .then(async (data: any) => {
-          console.log(data)
+          // console.log(data.data)
+          await save("AT", data.data.access_token);
           resolve();
         })
         .catch((error) => {
@@ -42,6 +43,8 @@ export const AuthContextProvider = ({ children }: any) => {
         });
     });
   };
+
+  
 
   return (
     <AuthContext.Provider

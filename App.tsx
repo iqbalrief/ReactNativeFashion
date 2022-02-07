@@ -13,6 +13,7 @@ import { HomeNavigator } from "./src/Home/Index"
 import { StatusBar } from "react-native";
 import { AuthContextProvider } from "./src/Service/Authentication/authContext";
 import { ProductsContextProvider } from "./src/Service/Products/productsContext";
+import { CartContextProvider } from "./src/Service/Cart/cart.context";
 
 
 const assets = [...authenticationAssets]
@@ -35,6 +36,7 @@ export default function App() {
     <SafeAreaProvider>
     <AuthContextProvider>
     <ProductsContextProvider> 
+      <CartContextProvider>
       <AppStack.Navigator>
         <AppStack.Screen
           name="Authentication"
@@ -47,6 +49,7 @@ export default function App() {
           options={{ headerShown: false }}
         /> 
       </AppStack.Navigator>
+      </CartContextProvider>
       </ProductsContextProvider>
       </AuthContextProvider>
        
