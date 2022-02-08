@@ -26,15 +26,19 @@ export const OutfitIdeasDetail = ({ navigation, route }: any) => {
 
   const { AddToCart }: any = useContext(CartContext);
 
+  const [size, SetSize] = useState(detail.size[0].name);
+
   let currentProductToCart = {
     quantity: 1,
-    size: detail.size[0].name,
+    size: size,
     productId: detail.id,
     image: detail.image[0].filename
   };
 
+  
+
   const onSizeChange = async (size: string) => {
-    currentProductToCart.size = size
+    SetSize(size)
   }
  
   const onSubmit = async () => {
@@ -46,22 +50,7 @@ export const OutfitIdeasDetail = ({ navigation, route }: any) => {
 
   return (
     <>
-      <View
-        style={{
-          width: width,
-          height: 240,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Image
-          source={{ uri: `http://192.168.1.10:3000/api/products/image/${detail.image[0].filename}` }}
-          style={{
-            width: '100%',
-            height: '100%',
-            resizeMode: 'contain',
-          }}
-        />
-      </View>
+     
       <View
         style={{
           width: '100%',
@@ -106,7 +95,15 @@ export const OutfitIdeasDetail = ({ navigation, route }: any) => {
                   }}
                 />
               </TouchableOpacity>
+              
             </View>
+            <View
+        style={{
+          width: width,
+          height: 240,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
             <FlatList
               // data={product.productImageList ? product.productImageList : null}
               horizontal
@@ -119,7 +116,18 @@ export const OutfitIdeasDetail = ({ navigation, route }: any) => {
                 [{ nativeEvent: { contentOffset: { x: scrollX } } }],
                 { useNativeDriver: false },
               )}
+              
             />
+  <Image
+          source={{ uri: `http://192.168.1.12:3000/api/products/image/${detail.image[0].filename}` }}
+          style={{
+            width: '100%',
+            height: '100%',
+            resizeMode: 'contain',
+          }}
+        />
+            
+            </View>
             <View
               style={{
                 width: '100%',
@@ -221,7 +229,7 @@ export const OutfitIdeasDetail = ({ navigation, route }: any) => {
                 maxHeight: 44,
                 marginBottom: 18,
               }}>
-              {/* {product.description} */}
+              {detail.description}
               description
             </Text>
             <View
@@ -300,13 +308,12 @@ export const OutfitIdeasDetail = ({ navigation, route }: any) => {
                   color: theme.colors.black,
                   marginBottom: 4,
                 }}>
-                {/* &#8377; {theme.colors.productPrice}.00 */}
-                {detail.price}
+                Price
+                {/* {detail.price} */}
               </Text>
-              {/* <Text>
-               Tax Rate 2%~ &#8377;{product.productPrice / 20} (&#8377;
-              {product.productPrice + product.productPrice / 20}) 
-            </Text> */}
+              <Text>
+              {detail.price}
+            </Text>
             </View>
           </View>
         </ScrollView>

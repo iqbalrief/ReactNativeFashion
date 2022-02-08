@@ -55,7 +55,7 @@ export const ListCard = ({ products }: any) => {
           <Image
             source={{
                 uri:
-                    `http://192.168.1.10:3000/api/products/image/${products.image[0].filename}`,
+                    `http://192.168.1.12:3000/api/products/image/${products.image[0].filename}`,
             }}
             style={{
               width: '80%',

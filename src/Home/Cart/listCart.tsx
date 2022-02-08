@@ -10,10 +10,9 @@ const ListCart = ({ cart }: any) => {
     return (
         <>
             
-          {/* {product ? product.map(renderProducts) : null} */}
+          
           <TouchableOpacity
-        // key={data.key}
-        // onPress={() => navigation.navigate('ProductInfo', {productID: data.id})}
+    
         style={{
           width: '100%',
           height: 100,
@@ -21,7 +20,7 @@ const ListCart = ({ cart }: any) => {
           flexDirection: 'row',
           alignItems: 'center',
         }}>
-        {/* <View
+        <View
           style={{
             width: '30%',
             height: 100,
@@ -31,19 +30,16 @@ const ListCart = ({ cart }: any) => {
             backgroundColor: theme.colors.backgroundLight,
             borderRadius: 10,
             marginRight: 22,
-          }}> */}
+          }}>
           <Image
-            source={{uri:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fbiggo.id%2Fs%2Ftshirt%2Berigo%2Boriginal%2F&psig=AOvVaw3izPOC9wuy5mMjVs1KcGWM&ust=1644307100367000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIiqqLiP7fUCFQAAAAAdAAAAABAJ"}}
+            source={{uri:"https://images.tokopedia.net/img/cache/900/hDjmkQ/2022/2/1/290a259e-d1c4-4448-a296-68d3b2dfb27b.jpg"}}
             style={{
-            flex: 1,
               width: '100%',
               height: '100%',
               resizeMode: 'contain',
             }}
           />
-        {/* </View> */}
-
-        
+        </View>
         <View
           style={{
             flex: 1,
@@ -75,7 +71,6 @@ const ListCart = ({ cart }: any) => {
                   maxWidth: '85%',
                   marginRight: 4,
                 }}>
-                {/* &#8377; */}
                 {cart.product.price}
               </Text>
               <View>

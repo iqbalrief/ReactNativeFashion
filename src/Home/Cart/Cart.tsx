@@ -16,7 +16,7 @@ const Cart = () => {
         setCart(getItem.data)
     }, [])
   return (
-    <View style={{paddingHorizontal: 16}}>
+   
     <View
       style={{
         width: '100%',
@@ -24,6 +24,7 @@ const Cart = () => {
         backgroundColor: theme.colors.white,
         position: 'relative',
       }}>
+          <ScrollView>
          <View
           style={{
             width: '100%',
@@ -67,7 +68,7 @@ const Cart = () => {
           }}>
           My Cart
         </Text>
-      <ScrollView>
+        <View style={{paddingHorizontal: 16}}>
       {cart && cart.map((item:any, i) => (
             <ListCart
               key={i}
@@ -75,6 +76,7 @@ const Cart = () => {
               
             />
           ))}         
+           </View>
        <View>
           <View
             style={{
@@ -357,7 +359,7 @@ const Cart = () => {
         </TouchableOpacity>
       </View>
     </View>
-    </View>
+   
     
   );
 };
