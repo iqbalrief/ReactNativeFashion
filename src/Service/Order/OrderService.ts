@@ -4,7 +4,7 @@ export const CreateOrder = (aT: any, data:any) => {
     // console.log(data)
     return new Promise<any>(async (resolve, reject) => {
 
-        await instance.post('order',
+        await instance.post('order', data
         ).then((data: any) => {
             resolve(data)
         }).catch((err: any) => {
