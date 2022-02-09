@@ -14,6 +14,7 @@ import { StatusBar } from "react-native";
 import { AuthContextProvider } from "./src/Service/Authentication/authContext";
 import { ProductsContextProvider } from "./src/Service/Products/productsContext";
 import { CartContextProvider } from "./src/Service/Cart/cart.context";
+import { OrderContext, OrderContextProvider } from "./src/Service/Order/OrderContext";
 
 
 const assets = [...authenticationAssets]
@@ -37,6 +38,7 @@ export default function App() {
     <AuthContextProvider>
     <ProductsContextProvider> 
       <CartContextProvider>
+        <OrderContextProvider>
       <AppStack.Navigator>
         <AppStack.Screen
           name="Authentication"
@@ -49,7 +51,9 @@ export default function App() {
           options={{ headerShown: false }}
         /> 
       </AppStack.Navigator>
+      </OrderContextProvider>
       </CartContextProvider>
+      
       </ProductsContextProvider>
       </AuthContextProvider>
        

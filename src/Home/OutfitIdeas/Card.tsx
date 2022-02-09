@@ -41,66 +41,8 @@ export const Card = ({ }) => {
       }}>
       <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            width: '100%',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            padding: 16,
-          }}>
-          <TouchableOpacity>
-            <Entypo
-              name="shopping-bag"
-              style={{
-                fontSize: 18,
-                color:  "#B9B9B9",
-                padding: 12,
-                borderRadius: 10,
-                backgroundColor: "#F0F0F3",
-              }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity >
-            <MaterialCommunityIcons
-              name="cart"
-              style={{
-                fontSize: 18,
-                color: "#B9B9B9",
-                padding: 12,
-                borderRadius: 10,
-                borderWidth: 1,
-                borderColor: "#F0F0F3",
-              }}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            marginBottom: 10,
-            padding: 16,
-          }}>
-          <Text
-            style={{
-              fontSize: 26,
-              color: "#000000",
-              fontWeight: '500',
-              letterSpacing: 1,
-              marginBottom: 10,
-            }}>
-            Hi-Fi Shop &amp; Service
-          </Text>
-          <Text
-            style={{
-              fontSize: 14,
-              color: "#000000",
-              fontWeight: '400',
-              letterSpacing: 1,
-              lineHeight: 24,
-            }}>
-            Audio shop on Rustaveli Ave 57.
-            {'\n'}This shop offers both products and services
-          </Text>
-        </View>
+        
+       
         <View
           style={{
             padding: 16,

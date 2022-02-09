@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { getValueFor } from "../Authentication/authService";
-import { addCartRequest, cartAllRequest } from "./cart.Service";
+import { addCartRequest, cartAllRequest, editCartRequest } from "./cart.Service";
 
 
 export const CartContext = createContext({});
@@ -40,6 +40,22 @@ export const CartContextProvider = ({ children }: any) => {
     });
   };
 
+  const editCart = async (id:any, data:any) => {
+    console.log(data)
+    
+    return new Promise<void>(async (resolve, reject) => {
+      const aT = await getValueFor("AT")
+     
+      await editCartRequest(aT, id, data)
+        .then(() => {
+          resolve();
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  };
+
  
 
   
@@ -48,7 +64,8 @@ export const CartContextProvider = ({ children }: any) => {
     <CartContext.Provider
       value={{
         AddToCart,
-        cartAll
+        cartAll,
+        editCart
       }}
     >
       {children}

@@ -27,13 +27,12 @@ export const ListCard = ({ products }: any) => {
             alignItems: 'center',
             marginBottom: 8,
           }}>
-          {products.isOff ? (
+         
             <View
               style={{
                 position: 'absolute',
                 width: '20%',
                 height: '24%',
-                backgroundColor: theme.colors.green,
                 top: 0,
                 left: 0,
                 borderTopLeftRadius: 10,
@@ -48,10 +47,10 @@ export const ListCard = ({ products }: any) => {
                   fontWeight: 'bold',
                   letterSpacing: 1,
                 }}>
-                {products.offPercentage}%
+               
               </Text>
             </View>
-          ) : null}
+       
           <Image
             source={{
                 uri:
@@ -79,14 +78,7 @@ export const ListCard = ({ products }: any) => {
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              <FontAwesome
-                name="circle"
-                style={{
-                  fontSize: 12,
-                  marginRight: 6,
-                  color: theme.colors.green,
-                }}
-              />
+              
               <Text
                 style={{
                   fontSize: 12,
@@ -101,23 +93,16 @@ export const ListCard = ({ products }: any) => {
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              <FontAwesome
-                name="circle"
-                style={{
-                  fontSize: 12,
-                  marginRight: 6,
-                  color: theme.colors.red,
-                }}
-              />
+              
               <Text
                 style={{
                   fontSize: 12,
-                  color: theme.colors.red,
+                  color: theme.colors.black,
                 }}>
                 {products.description}
               </Text>
             </View>
-        <Text>&#8377; {products.price}</Text>
+        <Text>{products.price}</Text>
       </TouchableOpacity>
 
 

@@ -1,12 +1,46 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { theme } from '../../components';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Box } from '../../components/Theme';
 import { productsRequest } from '../../Service/Products/productsService';
+import { CartContext } from '../../Service/Cart/cart.context';
 
 const ListCart = ({ cart }: any) => {
-    console.log(cart)
+  console.log(cart)
+  const [quantity, setQuantity] = useState(1);
+
+  
+
+  const {  editCart }: any = useContext(CartContext);
+  // console.log(editCart)
+  
+
+  const onAddQty = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const onSubtractQty = () => {
+    if(quantity === 1){
+      return
+    }
+    setQuantity(quantity - 1);
+  };
+
+  const updateQty = async (type: string) => {
+
+    let reqData;
+    if (type === "add") {
+      reqData = {  quantity: quantity + 1 };
+    } else if (type === "subtract") {
+      reqData = { quantity: quantity - 1 };
+    }
+
+    await editCart(cart.id, reqData);
+  };
+
+  
+   
     return (
         <>
             
@@ -71,7 +105,7 @@ const ListCart = ({ cart }: any) => {
                   maxWidth: '85%',
                   marginRight: 4,
                 }}>
-                {cart.product.price}
+                {cart.product.price * quantity}
               </Text>
               <View>
               <Text  style={{
@@ -105,6 +139,9 @@ const ListCart = ({ cart }: any) => {
                   borderColor: theme.colors.backgroundMedium,
                   opacity: 0.5,
                 }}>
+                  <TouchableOpacity onPress={() =>{ onSubtractQty()
+                    updateQty('subtract')
+                  }}>
                 <MaterialCommunityIcons
                   name="minus"
                   style={{
@@ -112,8 +149,9 @@ const ListCart = ({ cart }: any) => {
                     color: theme.colors.backgroundDark,
                   }}
                 />
+                </TouchableOpacity>
               </View>
-              <Text>1</Text>
+              <Text>{quantity}</Text>
               <View
                 style={{
                   borderRadius: 100,
@@ -123,6 +161,9 @@ const ListCart = ({ cart }: any) => {
                   borderColor: theme.colors.backgroundMedium,
                   opacity: 0.5,
                 }}>
+                    <TouchableOpacity onPress={() => {onAddQty() 
+                      updateQty("add")
+                      }}>
                 <MaterialCommunityIcons
                   name="plus"
                   style={{
@@ -130,6 +171,7 @@ const ListCart = ({ cart }: any) => {
                     color: theme.colors.backgroundDark,
                   }}
                 />
+                </TouchableOpacity>
               </View>
             </View>
             <TouchableOpacity onPress={() => true}>

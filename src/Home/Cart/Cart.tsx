@@ -1,20 +1,51 @@
-import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView, Alert } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { theme } from '../../components';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { CartContext } from '../../Service/Cart/cart.context';
 import listCart from './listCart';
 import ListCart from './listCart';
+import { OrderContext } from '../../Service/Order/OrderContext';
 
 
 const Cart = () => {
   const [cart, setCart] = useState([])
-    const { cartAll }: any = useContext(CartContext);
+  
+  const { cartAll, editCart }: any = useContext(CartContext);
+
+
 
     useEffect( async () => {  
         const getItem = await cartAll() 
         setCart(getItem.data)
     }, [])
+
+    const [order, setOrder] = useState()
+    const { AddToOrder }: any = useContext(OrderContext);
+
+  //   let totalPrice = 0;
+  //   cartAll.forEach((item: any) => {
+  //   totalPrice += item.price * item.quantity;
+  //   console.log(totalPrice)
+  // });
+
+    // useEffect( async () => {  
+    //     const getItem = await AddToOrder() 
+    //     setOrder(getItem.data)
+    // }, [])
+
+
+    const onSubmit = async (data: any) => {
+        
+      await AddToOrder(data).then(() => {
+         Alert.alert("Order Success")   
+      })
+      .catch((err: any) => {
+          console.log(err);
+        });
+  }
+
+
   return (
    
     <View

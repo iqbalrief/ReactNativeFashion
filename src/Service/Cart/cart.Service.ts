@@ -26,3 +26,18 @@ export const cartAllRequest = (aT: any) => {
 
     })
 }
+
+export const editCartRequest = (aT: any, id: any, data:any) => {
+    console.log('cart', id);
+    return new Promise<any>(async (resolve, reject) => {
+        
+        await instance.put(`cart/${id}`, data,
+        {headers: { Authorization: `Bearer ${aT}` } }
+        ).then((data: any) => {
+            resolve(data)
+        }).catch((error: any) => {
+            reject(error)
+        });
+
+    })
+}

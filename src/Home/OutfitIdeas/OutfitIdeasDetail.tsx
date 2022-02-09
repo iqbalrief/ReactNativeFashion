@@ -105,7 +105,7 @@ export const OutfitIdeasDetail = ({ navigation, route }: any) => {
           justifyContent: 'center',
         }}>
             <FlatList
-              // data={product.productImageList ? product.productImageList : null}
+              data={detail.image ? detail.image : null}
               horizontal
               // renderItem={renderProduct}
               showsHorizontalScrollIndicator={false}
@@ -137,27 +137,27 @@ export const OutfitIdeasDetail = ({ navigation, route }: any) => {
                 marginBottom: 16,
                 marginTop: 32,
               }}>
-              {/* {product.productImageList
-              ? product.productImageList.map((data, index) => {
+              {detail.image
+              ? detail.image.map((data, index) => {
                   let opacity = position.interpolate({
                     inputRange: [index - 1, index, index + 1],
                     outputRange: [0.2, 1, 0.2],
                     extrapolate: 'clamp',
-                  }); */}
-              {/* return ( */}
+                  });
+               return ( 
               <Animated.View
-                //   key={index}
+                  key={index}
                 style={{
                   width: '16%',
                   height: 2.4,
                   backgroundColor: theme.colors.black,
-                  // opacity,
+                  opacity,
                   marginHorizontal: 4,
                   borderRadius: 100,
                 }}></Animated.View>
-              {/* );
+              );
                 })
-              : null} */}
+              : null}
             </View>
           </View>
           <View
